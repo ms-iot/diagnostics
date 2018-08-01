@@ -71,9 +71,9 @@ inline std::string getOutputName(const std::string item_name)
  */
 enum DiagnosticLevel
 {
-  Level_OK = diagnostic_msgs::DiagnosticStatus::OK,
-  Level_Warn = diagnostic_msgs::DiagnosticStatus::WARN,
-  Level_Error = diagnostic_msgs::DiagnosticStatus::ERROR,
+  Level_OK = diagnostic_msgs::DiagnosticStatus::DIAG_OK,
+  Level_Warn = diagnostic_msgs::DiagnosticStatus::DIAG_WARN,
+  Level_Error = diagnostic_msgs::DiagnosticStatus::DIAG_ERROR,
   Level_Stale = 3
 };
 
@@ -82,11 +82,11 @@ enum DiagnosticLevel
  */
 inline DiagnosticLevel valToLevel(const int val)
 {
-  if (val == diagnostic_msgs::DiagnosticStatus::OK)
+  if (val == diagnostic_msgs::DiagnosticStatus::DIAG_OK)
     return Level_OK;
-  if (val == diagnostic_msgs::DiagnosticStatus::WARN)
+  if (val == diagnostic_msgs::DiagnosticStatus::DIAG_WARN)
     return Level_Warn;
-  if (val == diagnostic_msgs::DiagnosticStatus::ERROR)
+  if (val == diagnostic_msgs::DiagnosticStatus::DIAG_ERROR)
     return Level_Error;
   if (val == 3)
     return Level_Stale;
@@ -100,11 +100,11 @@ inline DiagnosticLevel valToLevel(const int val)
  */
 inline std::string valToMsg(const int val)
 {
-  if (val == diagnostic_msgs::DiagnosticStatus::OK)
+  if (val == diagnostic_msgs::DiagnosticStatus::DIAG_OK)
     return "OK";
-  if (val == diagnostic_msgs::DiagnosticStatus::WARN)
+  if (val == diagnostic_msgs::DiagnosticStatus::DIAG_WARN)
     return "Warning";
-  if (val == diagnostic_msgs::DiagnosticStatus::ERROR)
+  if (val == diagnostic_msgs::DiagnosticStatus::DIAG_ERROR)
     return "Error";
   if (val == 3)
     return "Stale";
