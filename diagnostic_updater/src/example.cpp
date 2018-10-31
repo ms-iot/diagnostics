@@ -54,10 +54,10 @@ void dummy_diagnostic(diagnostic_updater::DiagnosticStatusWrapper &stat)
   // summary and summaryf set the level and message.
   if (time_to_launch < 10)
     // summaryf for formatted text.
-    stat.summaryf(diagnostic_msgs::DiagnosticStatus::DIAG_ERROR, "Buckle your seat belt. Launch in %f seconds!", time_to_launch);
+    stat.summaryf(diagnostic_msgs::DiagnosticStatus::ERROR, "Buckle your seat belt. Launch in %f seconds!", time_to_launch);
   else
     // summary for unformatted text.
-    stat.summary(diagnostic_msgs::DiagnosticStatus::DIAG_OK, "Launch is in a long time. Have a soda.");
+    stat.summary(diagnostic_msgs::DiagnosticStatus::OK, "Launch is in a long time. Have a soda.");
 
   // add and addf are used to append key-value pairs.
   stat.add("Diagnostic Name", "dummy");
@@ -73,7 +73,7 @@ class DummyClass
 public:
   void produce_diagnostics(diagnostic_updater::DiagnosticStatusWrapper &stat)
   {
-    stat.summary(diagnostic_msgs::DiagnosticStatus::DIAG_WARN, "This is a silly updater.");
+    stat.summary(diagnostic_msgs::DiagnosticStatus::WARN, "This is a silly updater.");
 
     stat.add("Stupidicity of this updater", 1000.);
   }
@@ -87,7 +87,7 @@ public:
 
   void run(diagnostic_updater::DiagnosticStatusWrapper &stat)
   {
-    stat.summary(diagnostic_msgs::DiagnosticStatus::DIAG_WARN, "This is another silly updater.");
+    stat.summary(diagnostic_msgs::DiagnosticStatus::WARN, "This is another silly updater.");
     stat.add("Stupidicity of this updater", 2000.);
   }
 };
@@ -95,9 +95,9 @@ public:
 void check_lower_bound(diagnostic_updater::DiagnosticStatusWrapper &stat)
 {
   if (time_to_launch > 5)
-    stat.summary(diagnostic_msgs::DiagnosticStatus::DIAG_OK, "Lower-bound OK");
+    stat.summary(diagnostic_msgs::DiagnosticStatus::OK, "Lower-bound OK");
   else
-    stat.summary(diagnostic_msgs::DiagnosticStatus::DIAG_ERROR, "Too low");
+    stat.summary(diagnostic_msgs::DiagnosticStatus::ERROR, "Too low");
 
   stat.add("Low-Side Margin", time_to_launch - 5);
 }
@@ -105,9 +105,9 @@ void check_lower_bound(diagnostic_updater::DiagnosticStatusWrapper &stat)
 void check_upper_bound(diagnostic_updater::DiagnosticStatusWrapper &stat)
 {
   if (time_to_launch < 10)
-    stat.summary(diagnostic_msgs::DiagnosticStatus::DIAG_OK, "Upper-bound OK");
+    stat.summary(diagnostic_msgs::DiagnosticStatus::OK, "Upper-bound OK");
   else
-    stat.summary(diagnostic_msgs::DiagnosticStatus::DIAG_WARN, "Too high");
+    stat.summary(diagnostic_msgs::DiagnosticStatus::WARN, "Too high");
 
   stat.add("Top-Side Margin", 10 - time_to_launch);
 }

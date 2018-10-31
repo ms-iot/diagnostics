@@ -65,7 +65,7 @@ public:
   void pretest(diagnostic_updater::DiagnosticStatusWrapper& status)
   {
     ROS_INFO("Doing preparation stuff before we run our test.\n");
-    status.summary(diagnostic_msgs::DiagnosticStatus::DIAG_OK, "Pretest completed successfully.");
+    status.summary(diagnostic_msgs::DiagnosticStatus::OK, "Pretest completed successfully.");
     
     some_val = 1.0;
   }
@@ -78,12 +78,12 @@ public:
 
     if (lookup_successful)
     {
-      status.summary(diagnostic_msgs::DiagnosticStatus::DIAG_OK, "ID Lookup successful");
+      status.summary(diagnostic_msgs::DiagnosticStatus::OK, "ID Lookup successful");
       
       self_test_.setID(ID);
 
     } else {
-      status.summary(diagnostic_msgs::DiagnosticStatus::DIAG_ERROR, "ID Lookup failed");
+      status.summary(diagnostic_msgs::DiagnosticStatus::ERROR, "ID Lookup failed");
     }
   }
 
@@ -93,7 +93,7 @@ public:
     status.level = 0;
 
     // Here's where we would report success if we'd made it past
-    status.summary(diagnostic_msgs::DiagnosticStatus::DIAG_OK, "We made it past the exception throwing statement.");
+    status.summary(diagnostic_msgs::DiagnosticStatus::OK, "We made it past the exception throwing statement.");
   }
 
   void test3(diagnostic_updater::DiagnosticStatusWrapper& status)
@@ -101,25 +101,25 @@ public:
     some_val += 41.0;
 
     status.add("some value", some_val);
-    status.summary(diagnostic_msgs::DiagnosticStatus::DIAG_OK, "We successfully changed the value.");
+    status.summary(diagnostic_msgs::DiagnosticStatus::OK, "We successfully changed the value.");
   }
 
   void test4(diagnostic_updater::DiagnosticStatusWrapper& status)
   {
     if (some_val == 42.0)
     {
-      status.summary(diagnostic_msgs::DiagnosticStatus::DIAG_OK, "We observed the change in value");
+      status.summary(diagnostic_msgs::DiagnosticStatus::OK, "We observed the change in value");
     } 
     else
     {
-      status.summaryf(diagnostic_msgs::DiagnosticStatus::DIAG_ERROR, "We failed to observe the change in value, it is currently %f.", some_val);
+      status.summaryf(diagnostic_msgs::DiagnosticStatus::ERROR, "We failed to observe the change in value, it is currently %f.", some_val);
     }
   }
 
   void posttest(diagnostic_updater::DiagnosticStatusWrapper& status)
   {
     ROS_INFO("Doing cleanup stuff after we run our test.\n");
-    status.summary(diagnostic_msgs::DiagnosticStatus::DIAG_OK, "Posttest completed successfully.");
+    status.summary(diagnostic_msgs::DiagnosticStatus::OK, "Posttest completed successfully.");
   }
 
   bool spin()
