@@ -22,7 +22,7 @@ endif()
 find_package(Boost REQUIRED COMPONENTS system)
 include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} ${GTEST_INCLUDE_DIRS})
 
-add_library(${PROJECT_NAME} STATIC
+add_library(${PROJECT_NAME}
   src/status_item.cpp
   src/analyzer_group.cpp
   src/generic_analyzer.cpp
