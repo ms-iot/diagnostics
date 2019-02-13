@@ -22,7 +22,7 @@ endif()
 find_package(Boost REQUIRED COMPONENTS system)
 include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 
-# Add gtest paths
+# Add gtest include path
 if (GTEST_FOUND)
   include_directories(${GTEST_INCLUDE_DIRS})
 else()
