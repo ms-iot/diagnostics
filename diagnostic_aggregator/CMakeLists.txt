@@ -29,7 +29,7 @@ else()
   message(FATAL_ERROR "gtest is required, but not found")
 endif()
 
-add_library(${PROJECT_NAME} STATIC
+add_library(${PROJECT_NAME}
   src/status_item.cpp
   src/analyzer_group.cpp
   src/generic_analyzer.cpp
