@@ -20,7 +20,14 @@ if( (${diagnostic_msgs_VERSION} VERSION_EQUAL "1.12.0") OR
 endif()
 
 find_package(Boost REQUIRED COMPONENTS system)
-include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS} ${GTEST_INCLUDE_DIRS})
+include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
+
+# Add gtest include path
+if (GTEST_FOUND)
+  include_directories(${GTEST_INCLUDE_DIRS})
+else()
+  message(FATAL_ERROR "gtest is required, but not found")
+endif()
 
 add_library(${PROJECT_NAME} STATIC
   src/status_item.cpp
