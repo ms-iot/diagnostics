@@ -12,10 +12,10 @@ catkin_package(DEPENDS diagnostic_msgs roscpp std_msgs
 )
 
 include_directories(include ${catkin_INCLUDE_DIRS})
-add_executable(example src/example.cpp)
+#add_executable(example src/example.cpp)
 add_library(${PROJECT_NAME}
   src/timestamp_status.cpp)
-target_link_libraries(example ${catkin_LIBRARIES})
+#target_link_libraries(example ${catkin_LIBRARIES})
 
 #set(LOCAL_GTEST_DIR "gtest-1.7.0")
 # gtest could be included in ${catkin_INCLUDE_DIRS}, prepend local gtest include directory so it's searched first
