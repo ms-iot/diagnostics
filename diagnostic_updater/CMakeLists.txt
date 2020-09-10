@@ -1,6 +1,8 @@
 cmake_minimum_required(VERSION 3.0.2)
 project(diagnostic_updater)
 
+find_package(Boost REQUIRED COMPONENTS thread)
+
 # Load catkin and all dependencies required for this package
 find_package(catkin REQUIRED diagnostic_msgs roscpp std_msgs)
 
@@ -11,10 +13,11 @@ catkin_package(DEPENDS diagnostic_msgs roscpp std_msgs
 	       LIBRARIES ${PROJECT_NAME}
 )
 
-include_directories(include ${catkin_INCLUDE_DIRS})
+include_directories(include ${catkin_INCLUDE_DIRS} ${Boost_INCLUDE_DIRS})
 #add_executable(example src/example.cpp)
 add_library(${PROJECT_NAME}
   src/timestamp_status.cpp)
+target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} ${catkin_LIBRARIES})
 #target_link_libraries(example ${catkin_LIBRARIES})
 
 #set(LOCAL_GTEST_DIR "gtest-1.7.0")
